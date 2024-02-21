@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <!-- Импорт библиотеки MindAR -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+</head>
+<body>
+    <!-- Инициализация AR сцены с указанием файла конфигурации меток -->
+    <a-scene mindar-image="imageTargetSrc: holy.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-assets>
+            <!-- Предварительная загрузка видеофайлов -->
+            <video id="video23" src="8.mp4" playsinline webkit-playsinline></video>
+            <video id="video8" src="23.mp4" playsinline webkit-playsinline></video>
+        </a-assets>
+
+        <!-- Камера, наблюдающая за сценой -->
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <!-- Отображение видео для метки 8 марта (индекс 0) -->
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-video src="#video8" position="0 0 0" rotation="0 0 0" height="1" width="1.777777" play="onTargetFound: play; onTargetLost: stop"></a-video>
+        </a-entity>
+
+        <!-- Отображение видео для метки 23 февраля (индекс 1) -->
+        <a-entity mindar-image-target="targetIndex: 1">
+            <a-video src="#video23" position="0 0 0" rotation="0 0 0" height="1" width="1.777777" play="onTargetFound: play; onTargetLost: stop"></a-video>
+        </a-entity>
+    </a-scene>
+</body>
+</html>
